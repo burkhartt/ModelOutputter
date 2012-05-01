@@ -1,10 +1,15 @@
-require "rspec"
+require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe "My behaviour" do
+describe ModelOutputter::Model do
+  describe "With a simple person model with no properties set" do
+    before do
+      person_model = Person.new ( )
 
-  it "should do something" do
+      @model_outputter = ModelOutputter::Model.new(person_model)
+    end
 
-    #To change this template use File | Settings | File Templates.
-    true.should == false
+    it "should output an empty string" do
+      @model_outputter.output().must_be_empty
+    end
   end
 end
